@@ -123,6 +123,4 @@ if stat and stat.type == "directory" then
 	})
 end
 
-vim.schedule(function()
-	require("lz.n").load("lazy")
-end)
+require("lz.n").load("lazy")
