@@ -2,12 +2,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     mnw.url = "github:Gerg-L/mnw";
+    neovim-treesitter = {
+      url = "github:neovim-treesitter/nvim-treesitter";
+      flake = false;
+    };
   };
 
   outputs =
     {
       nixpkgs,
       mnw,
+      neovim-treesitter,
       self,
       ...
     }:
@@ -45,7 +50,9 @@
               nvim-lspconfig
               conform-nvim
               neogit
-              nvim-treesitter.withAllGrammars
+              (nvim-treesitter.overrideAttrs {
+                src = neovim-treesitter;
+              }).withAllGrammars
               (typst-preview-nvim.overrideAttrs {
                 postPatch = ''
                   substituteInPlace lua/typst-preview/config.lua \
