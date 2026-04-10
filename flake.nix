@@ -41,6 +41,9 @@
               nvim-web-devicons
               base16-nvim
               oil-nvim
+              (nvim-treesitter.overrideAttrs {
+                src = neovim-treesitter;
+              }).withAllGrammars
             ];
             opt = with pkgs.vimPlugins; [
               telescope-nvim
@@ -50,9 +53,6 @@
               nvim-lspconfig
               conform-nvim
               neogit
-              (nvim-treesitter.overrideAttrs {
-                src = neovim-treesitter;
-              }).withAllGrammars
               (typst-preview-nvim.overrideAttrs {
                 postPatch = ''
                   substituteInPlace lua/typst-preview/config.lua \

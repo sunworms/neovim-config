@@ -120,6 +120,7 @@ if stat and stat.type == "directory" then
 	})
 end
 
+require("nvim-treesitter").setup()
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
 		local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
