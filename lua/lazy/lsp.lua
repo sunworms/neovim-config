@@ -1,44 +1,13 @@
 return {
-	"nvim-lspconfig",
-	event = "BufReadPost",
-	after = function()
-		local capabilities = require("blink.cmp").get_lsp_capabilities()
-		local servers = {
-			"nixd",
-			"nil_ls",
-			"texlab",
-			"rust_analyzer",
-			"jdtls",
-			"gopls",
-			"tinymist",
-		}
+  "nvim-lspconfig",
+  event = "BufReadPost",
+  after = function()
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-		for _, lsp in ipairs(servers) do
-			vim.lsp.config(lsp, {
-				capabilities = capabilities,
-				root_markers = { ".git" },
-			})
-			vim.lsp.enable(lsp)
-		end
-
-		vim.lsp.config("lua_ls", {
-			capabilities = capabilities,
-			root_markers = { ".git" },
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-					workspace = {
-						library = vim.api.nvim_get_runtime_file("", true),
-						checkThirdParty = false,
-					},
-					runtime = { version = "LuaJIT" },
-				},
-			},
-		})
-
-		vim.lsp.enable("lua_ls")
+    local langs = { "nix-1", "nix-2", "latex", "typst", "lua", "rust", "go", "java" }
+    for _, lang in ipairs(langs) do
+      require("lazy.lsp." .. lang)(capabilities)
+    end
 
 		vim.diagnostic.config({
 			virtual_text = {
