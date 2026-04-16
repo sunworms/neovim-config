@@ -36,6 +36,7 @@
               nvim-web-devicons
               base16-nvim
               oil-nvim
+              vimtex
               nvim-treesitter.withAllGrammars
             ];
             opt = with pkgs.vimPlugins; [
@@ -55,7 +56,7 @@
               })
             ];
 
-            dev.myconfig = {
+            dev.default = {
               pure = ./.;
               impure = "/' .. vim.uv.cwd()  .. '/neovim-config";
             };

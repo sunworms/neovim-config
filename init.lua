@@ -46,6 +46,8 @@ vimg.clipboard = {
 	paste = { ["+"] = "wl-paste", ["*"] = "wl-paste" },
 	cache_enabled = 1,
 }
+vimg.vimtex_view_method = "okular"
+vimg.vimtex_quickfix_mode = 0
 
 local opt = vim.opt
 
