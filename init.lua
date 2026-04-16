@@ -51,7 +51,6 @@ local opt = vim.opt
 
 -- General
 opt.mouse = "a"
-opt.clipboard = "unnamedplus"
 opt.hidden = true
 opt.swapfile = false
 opt.updatetime = 500
@@ -82,6 +81,12 @@ opt.splitright = true
 
 -- No ShaDa
 opt.shadafile = "NONE"
+
+vim.keymap.set("n", "<Space>y", '"+y')
+vim.keymap.set("v", "<Space>y", '"+y')
+
+vim.keymap.set("n", "<Space>p", '"+p')
+vim.keymap.set("v", "<Space>p", '"+p')
 
 vim.o.winborder = "rounded"
 
