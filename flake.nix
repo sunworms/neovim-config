@@ -2,17 +2,12 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     mnw.url = "github:Gerg-L/mnw";
-    neovim-treesitter = {
-      url = "github:neovim-treesitter/nvim-treesitter";
-      flake = false;
-    };
   };
 
   outputs =
     {
       nixpkgs,
       mnw,
-      neovim-treesitter,
       self,
       ...
     }:
@@ -41,9 +36,7 @@
               nvim-web-devicons
               base16-nvim
               oil-nvim
-              (nvim-treesitter.overrideAttrs {
-                src = neovim-treesitter;
-              }).withAllGrammars
+              nvim-treesitter.withAllGrammars
             ];
             opt = with pkgs.vimPlugins; [
               telescope-nvim
