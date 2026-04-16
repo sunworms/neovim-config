@@ -46,7 +46,9 @@ vimg.clipboard = {
 	paste = { ["+"] = "wl-paste", ["*"] = "wl-paste" },
 	cache_enabled = 1,
 }
-vimg.vimtex_view_method = "okular"
+
+vimg.vimtex_view_general_viewer = "okular"
+vimg.vimtex_view_general_options = [[--unique file:@pdf#src:@line@tex]]
 vimg.vimtex_quickfix_mode = 0
 
 local opt = vim.opt
@@ -127,13 +129,18 @@ if stat and stat.type == "directory" then
 	})
 end
 
-require("nvim-treesitter").setup()
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
 		local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
 		if lang and vim.treesitter.language.add(lang) then
 			vim.treesitter.start(args.buf, lang)
 		end
+	end,
+})
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "tex",
+	callback = function()
+		vim.treesitter.stop()
 	end,
 })
 vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
