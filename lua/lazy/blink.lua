@@ -1,7 +1,10 @@
 return {
 	"blink.cmp",
-	event = "BufReadPre",
-	after = function()
+	event = "InsertEnter",
+  before = function()
+    vim.pack.add({ { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range('v1.x') } })
+  end,
+  after = function()
 		require("blink.cmp").setup({
 			keymap = { preset = "super-tab" },
 

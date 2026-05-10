@@ -1,7 +1,11 @@
 return {
-  "nvim-lspconfig",
-  event = "BufReadPost",
+	"nvim-lspconfig",
+  event = "BufNewFile",
+  before = function()
+    vim.pack.add({"https://github.com/neovim/nvim-lspconfig"})
+  end,
   after = function()
+  	require("fzf-lua").register_ui_select()
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
     local langs = { "nix-1", "nix-2", "latex", "typst", "lua", "rust", "go", "java" }

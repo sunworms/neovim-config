@@ -14,7 +14,7 @@ local disabled_built_ins = {
 	"tar",
 	"tarPlugin",
 	"getscript",
-	"getscriptPlugin",
+  "getscriptPlugin",
 	"vimball",
 	"vimballPlugin",
 	"2html_plugin",
@@ -46,10 +46,6 @@ vimg.clipboard = {
 	paste = { ["+"] = "wl-paste", ["*"] = "wl-paste" },
 	cache_enabled = 1,
 }
-
-vimg.vimtex_view_general_viewer = "okular"
-vimg.vimtex_view_general_options = [[--unique file:@pdf#src:@line@tex]]
-vimg.vimtex_quickfix_mode = 0
 
 local opt = vim.opt
 
@@ -94,13 +90,28 @@ vim.keymap.set("v", "<Space>p", '"+p')
 
 vim.o.winborder = "rounded"
 
-local theme_file = vim.fn.expand("~/.cache/matugen/matugen.lua")
+local eager = {
+	"https://github.com/RRethy/nvim-base16",
+	"https://github.com/rafamadriz/friendly-snippets",
+	"https://github.com/stevearc/oil.nvim",
+	"https://github.com/nvim-tree/nvim-web-devicons",
+	"https://github.com/romus204/tree-sitter-manager.nvim",
+	"https://github.com/lumen-oss/lz.n",
+}
+
+for _, pkg in ipairs(eager) do
+  vim.pack.add({ pkg })
+end
+
+local theme_file = vim.fn.expand("~/.config/matugen/neovim.lua")
 
 local function apply_matugen_theme()
-	local ok, err = pcall(dofile, theme_file)
-	if not ok then
-		vim.cmd.colorscheme("base16-catppuccin-mocha")
-	end
+  local ok, theme = pcall(dofile, theme_file)
+  if ok and type(theme) == "table" and theme.setup then
+    theme.setup()
+  else
+    vim.cmd.colorscheme("base16-catppuccin-mocha")
+  end
 end
 
 vim.api.nvim_create_autocmd("UIEnter", {
@@ -129,6 +140,10 @@ if stat and stat.type == "directory" then
 	})
 end
 
+require("tree-sitter-manager").setup({
+  auto_install = true,
+})
+
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
 		local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
@@ -146,6 +161,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.wo[0][0].foldmethod = "expr"
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-vim.opt.foldenable = false
+opt.foldenable = false
 
 require("lz.n").load("lazy")
