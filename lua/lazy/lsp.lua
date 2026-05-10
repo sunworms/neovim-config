@@ -1,6 +1,6 @@
 return {
 	"nvim-lspconfig",
-  event = "BufNewFile",
+  event = "BufReadPost",
   before = function()
     vim.pack.add({"https://github.com/neovim/nvim-lspconfig"})
   end,

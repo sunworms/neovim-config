@@ -1,5 +1,6 @@
 return {
 	"fzf-lua",
+  event = "BufReadPre",
   cmd = "FzfLua",
   before = function()
     vim.pack.add({"https://github.com/ibhagwan/fzf-lua"})

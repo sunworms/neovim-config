@@ -1,6 +1,6 @@
 return {
 	"blink.cmp",
-	event = "InsertEnter",
+	event = "BufReadPre",
   before = function()
     vim.pack.add({ { src = "https://github.com/Saghen/blink.cmp", version = vim.version.range('v1.x') } })
   end,
