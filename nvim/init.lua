@@ -50,8 +50,6 @@ vimg.clipboard = {
 vimg.vimtex_view_general_viewer = "okular"
 vimg.vimtex_view_general_options = [[--unique file:@pdf#src:@line@tex]]
 vimg.vimtex_quickfix_mode = 0
-vimg.vimtex_env_toggle_math_map = ""
-vimg.vimtex_delim_toggle_mod_list = {}
 
 local opt = vim.opt
 
