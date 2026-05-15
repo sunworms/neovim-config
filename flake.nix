@@ -27,11 +27,12 @@
       packages = forAllSystems (pkgs: {
         default = mnw.lib.wrap pkgs {
           neovim = pkgs.neovim-unwrapped;
-          initLua = builtins.readFile ./init.lua;
+          luaFiles = [
+            ./nvim/init.lua
+          ];
           plugins = {
             start = with pkgs.vimPlugins; [
               lz-n
-              plenary-nvim
               friendly-snippets
               nvim-web-devicons
               base16-nvim
@@ -40,7 +41,7 @@
               nvim-treesitter.withAllGrammars
             ];
             opt = with pkgs.vimPlugins; [
-              telescope-nvim
+              fzf-lua
               blink-cmp
               nvim-autopairs
               lualine-nvim
@@ -57,8 +58,8 @@
             ];
 
             dev.default = {
-              pure = ./.;
-              impure = "/' .. vim.uv.cwd()  .. '/neovim-config";
+              pure = ./nvim;
+              impure = "/home/sunny/Documents/neovim-config/nvim";
             };
           };
         };

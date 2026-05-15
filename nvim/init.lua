@@ -50,6 +50,8 @@ vimg.clipboard = {
 vimg.vimtex_view_general_viewer = "okular"
 vimg.vimtex_view_general_options = [[--unique file:@pdf#src:@line@tex]]
 vimg.vimtex_quickfix_mode = 0
+vimg.vimtex_env_toggle_math_map = ""
+vimg.vimtex_delim_toggle_mod_list = {}
 
 local opt = vim.opt
 
@@ -86,11 +88,13 @@ opt.splitright = true
 -- No ShaDa
 opt.shadafile = "NONE"
 
-vim.keymap.set("n", "<Space>y", '"+y')
-vim.keymap.set("v", "<Space>y", '"+y')
+local key = vim.keymap
 
-vim.keymap.set("n", "<Space>p", '"+p')
-vim.keymap.set("v", "<Space>p", '"+p')
+key.set("n", "<Space>y", '"+y')
+key.set("v", "<Space>y", '"+y')
+
+key.set("n", "<Space>p", '"+p')
+key.set("v", "<Space>p", '"+p')
 
 vim.o.winborder = "rounded"
 
@@ -146,6 +150,6 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.wo[0][0].foldmethod = "expr"
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-vim.opt.foldenable = false
+opt.foldenable = false
 
 require("lz.n").load("lazy")
