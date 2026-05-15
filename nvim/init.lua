@@ -98,11 +98,13 @@ key.set("v", "<Space>p", '"+p')
 
 vim.o.winborder = "rounded"
 
-local theme_file = vim.fn.expand("~/.cache/matugen/matugen.lua")
+local theme_file = vim.fn.expand("~/.config/matugen/neovim.lua")
 
 local function apply_matugen_theme()
-	local ok, err = pcall(dofile, theme_file)
-	if not ok then
+	local ok, theme = pcall(dofile, theme_file)
+	if ok and type(theme) == "table" and theme.setup then
+		theme.setup()
+	else
 		vim.cmd.colorscheme("base16-catppuccin-mocha")
 	end
 end
