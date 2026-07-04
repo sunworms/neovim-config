@@ -1,18 +1,11 @@
 {
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    mnw.url = "github:Gerg-L/mnw";
-  };
-
   outputs =
-    {
-      nixpkgs,
-      mnw,
-      self,
-      ...
-    }:
+    { self, ... }@args:
     let
-      lib = nixpkgs.lib;
+      inputs = (import ./.tack) {
+        overrides = args.tackOverrides or { };
+      };
+      lib = inputs.nixpkgs.lib;
       supportedSystems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -21,11 +14,11 @@
       ];
 
       forAllSystems =
-        function: lib.genAttrs supportedSystems (system: function nixpkgs.legacyPackages.${system});
+        function: lib.genAttrs supportedSystems (system: function inputs.nixpkgs.legacyPackages.${system});
     in
     {
       packages = forAllSystems (pkgs: {
-        default = mnw.lib.wrap pkgs {
+        default = inputs.mnw.lib.wrap pkgs {
           neovim = pkgs.neovim-unwrapped;
           luaFiles = [
             ./nvim/init.lua
