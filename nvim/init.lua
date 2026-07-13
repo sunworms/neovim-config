@@ -49,13 +49,6 @@ vimg.clipboard = {
 
 vimg.vimtex_view_method = "zathura"
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "tex",
-	callback = function()
-		vim.keymap.set("i", "<C-e>", "<Plug>(vimtex-delim-close)", { buffer = true, remap = true })
-	end,
-})
-
 local opt = vim.opt
 
 -- General
@@ -95,6 +88,13 @@ opt.shadafile = "NONE"
 opt.whichwrap:append("<,>,h,l,[,]")
 
 local key = vim.keymap
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "tex",
+	callback = function()
+		key.set("i", "<Space>be", "<Plug>(vimtex-delim-close)", { buffer = true, remap = true })
+	end,
+})
 
 key.set("n", "<Space>y", '"+y')
 key.set("v", "<Space>y", '"+y')
