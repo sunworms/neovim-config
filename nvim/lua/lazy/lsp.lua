@@ -1,17 +1,17 @@
 return {
-  "nvim-lspconfig",
-  event = "BufReadPost",
-  before = function()
-  	require("lz.n").trigger_load("fzf-lua")
-  end,
-  after = function()
-  	require("fzf-lua").register_ui_select()
-    local capabilities = require("blink.cmp").get_lsp_capabilities()
+	"nvim-lspconfig",
+	event = "BufReadPost",
+	before = function()
+		require("lz.n").trigger_load("fzf-lua")
+	end,
+	after = function()
+		require("fzf-lua").register_ui_select()
+		local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    local langs = { "nix-1", "nix-2", "latex", "typst", "lua", "rust", "go", "java" }
-    for _, lang in ipairs(langs) do
-      require("lazy.lsp." .. lang)(capabilities)
-    end
+		local langs = { "nix-1", "nix-2", "latex", "typst", "lua", "rust", "go", "java" }
+		for _, lang in ipairs(langs) do
+			require("lazy.lsp." .. lang)(capabilities)
+		end
 
 		vim.diagnostic.config({
 			virtual_text = {

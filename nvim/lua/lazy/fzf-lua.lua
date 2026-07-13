@@ -1,7 +1,7 @@
 return {
 	"fzf-lua",
 	cmd = "FzfLua",
-	
+
 	after = function()
 		require("fzf-lua").setup()
 	end,
