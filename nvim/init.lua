@@ -89,13 +89,6 @@ opt.whichwrap:append("<,>,h,l,[,]")
 
 local key = vim.keymap
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "tex",
-	callback = function()
-		key.set("i", "<C-d>", "<Plug>(vimtex-env-close)", { buffer = true })
-	end,
-})
-
 key.set("n", "<Space>y", '"+y')
 key.set("v", "<Space>y", '"+y')
 
