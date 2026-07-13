@@ -3,6 +3,7 @@ return {
 	event = "BufReadPost",
 	before = function()
 		require("lz.n").trigger_load("fzf-lua")
+		require("lz.n").trigger_load("blink.cmp")
 	end,
 	after = function()
 		require("fzf-lua").register_ui_select()

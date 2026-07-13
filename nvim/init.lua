@@ -49,6 +49,13 @@ vimg.clipboard = {
 
 vimg.vimtex_view_method = "zathura"
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "tex",
+	callback = function()
+		vim.keymap.set("i", "<C-e>", "<Plug>(vimtex-delim-close)", { buffer = true, remap = true })
+	end,
+})
+
 local opt = vim.opt
 
 -- General
