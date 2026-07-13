@@ -92,7 +92,7 @@ local key = vim.keymap
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "tex",
 	callback = function()
-		key.set("i", "<Space>be", "<Plug>(vimtex-delim-close)", { buffer = true, remap = true })
+		key.set("i", "<C-d>", "<Plug>(vimtex-env-close)", { buffer = true })
 	end,
 })
 
