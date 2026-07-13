@@ -1,0 +1,16 @@
+{
+  "mnw": {
+    "type": "github",
+    "owner": "Gerg-L",
+    "repo": "mnw",
+    "rev": "0871dbf63a53610c95db04439ed8ea4d6ec9c160",
+    "narHash": "sha256-VKKe8r4pwCGWZ3Yr9CPN129R4S3CKLSrlYqdYz3vKpM=",
+    "lastModified": 1780772958
+  },
+  "nixpkgs": {
+    "type": "tarball",
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1032869.e7a3ca8092b6/nixexprs.tar.xz",
+    "rev": "e7a3ca8092b61ff85b6a45bf863ea2b2d6a661b3",
+    "narHash": "sha256-+GVwKnbbSmf4cWMJyRzvw8H5yFknmkLoPD5v6snqPzo="
+  }
+}

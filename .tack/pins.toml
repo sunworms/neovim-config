@@ -1,0 +1,12 @@
+[shorturls]
+gh = "github:{path}"
+nixpkgs = "https://channels.nixos.org/{path}/nixexprs.tar.xz"
+
+[all_follow]
+type = "fetch"
+
+[inputs.nixpkgs]
+url = "nixpkgs:nixos-unstable"
+
+[inputs.mnw]
+url = "gh:Gerg-L/mnw"

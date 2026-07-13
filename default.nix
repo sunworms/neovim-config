@@ -1,5 +1,5 @@
 let
-  inputs = import ./npins;
+  inputs = import ./.tack;
   pkgs = import inputs.nixpkgs {
     config.allowUnfree = true;
   };
@@ -31,10 +31,10 @@ mnw.lib.wrap pkgs {
       orgmode
       (typst-preview-nvim.overrideAttrs {
         postPatch = ''
-          					substituteInPlace lua/typst-preview/config.lua \
-          						--replace-fail "['tinymist'] = nil" "['tinymist'] = 'tinymist'" \
-          						--replace-fail "['websocat'] = nil" "['websocat'] = 'websocat'"
-          				'';
+          substituteInPlace lua/typst-preview/config.lua \
+          	--replace-fail "['tinymist'] = nil" "['tinymist'] = 'tinymist'" \
+          	--replace-fail "['websocat'] = nil" "['websocat'] = 'websocat'"
+        '';
       })
     ];
 
