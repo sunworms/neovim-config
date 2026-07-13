@@ -84,6 +84,9 @@ opt.splitright = true
 -- No ShaDa
 opt.shadafile = "NONE"
 
+-- Wrap Lines
+opt.whichwrap:append("<,>,h,l,[,]")
+
 local key = vim.keymap
 
 key.set("n", "<Space>y", '"+y')
@@ -91,8 +94,6 @@ key.set("v", "<Space>y", '"+y')
 
 key.set("n", "<Space>p", '"+p')
 key.set("v", "<Space>p", '"+p')
-
-vim.cmd("set whichwrap+=<,>,h,l,[,]")
 
 vim.o.winborder = "rounded"
 
