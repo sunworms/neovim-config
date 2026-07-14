@@ -47,7 +47,8 @@ vimg.clipboard = {
 	cache_enabled = 1,
 }
 
-vimg.vimtex_view_method = "zathura"
+vimg.vimtex_view_general_viewer = "okular"
+vimg.vimtex_view_general_options = "--unique file:@pdf#src:@line@tex"
 
 local opt = vim.opt
 
