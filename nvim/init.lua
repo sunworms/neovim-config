@@ -1,7 +1,7 @@
 vim.loader.enable()
 
 -- Diable builtins
-local vimg = vim.g
+local vg = vim.g
 
 local disabled_built_ins = {
 	"netrw",
@@ -30,25 +30,25 @@ local disabled_built_ins = {
 }
 
 for _, plugin in ipairs(disabled_built_ins) do
-	vimg["loaded_" .. plugin] = 1
+	vg["loaded_" .. plugin] = 1
 end
 
 -- Set the leader key to the spacebar
-vimg.mapleader = " "
-vimg.maplocalleader = " "
-vimg.loaded_perl_provider = 0
-vimg.loaded_ruby_provider = 0
-vimg.loaded_node_provider = 0
-vimg.loaded_python3_provider = 0
-vimg.clipboard = {
+vg.mapleader = " "
+vg.maplocalleader = " "
+vg.loaded_perl_provider = 0
+vg.loaded_ruby_provider = 0
+vg.loaded_node_provider = 0
+vg.loaded_python3_provider = 0
+vg.clipboard = {
 	name = "wl-utils",
 	copy = { ["+"] = "wl-copy", ["*"] = "wl-copy" },
 	paste = { ["+"] = "wl-paste", ["*"] = "wl-paste" },
 	cache_enabled = 1,
 }
 
-vimg.vimtex_view_general_viewer = "okular"
-vimg.vimtex_view_general_options = "--unique file:@pdf#src:@line@tex"
+vg.vimtex_view_general_viewer = "atril"
+vg.vimtex_view_general_options = "file:@pdf#src:@line@tex"
 
 local opt = vim.opt
 
