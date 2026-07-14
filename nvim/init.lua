@@ -47,8 +47,7 @@ vg.clipboard = {
 	cache_enabled = 1,
 }
 
-vg.vimtex_view_general_viewer = "atril"
-vg.vimtex_view_general_options = "file:@pdf#src:@line@tex"
+vg.vimtex_view_method = "zathura"
 
 local opt = vim.opt
 
