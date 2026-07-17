@@ -1,6 +1,6 @@
 return {
 	"blink.cmp",
-	event = "BufReadPre",
+	event = "InsertEnter",
 	after = function()
 		require("blink.cmp").setup({
 			keymap = { preset = "super-tab" },
