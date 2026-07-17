@@ -47,8 +47,6 @@ vg.clipboard = {
 	cache_enabled = 1,
 }
 
-vg.vimtex_view_method = "zathura"
-
 local opt = vim.opt
 
 -- General

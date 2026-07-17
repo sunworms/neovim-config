@@ -17,7 +17,6 @@ mnw.lib.wrap pkgs {
       nvim-web-devicons
       base16-nvim
       oil-nvim
-      vimtex
       nvim-treesitter.withAllGrammars
     ];
     opt = with pkgs.vimPlugins; [
@@ -29,6 +28,7 @@ mnw.lib.wrap pkgs {
       conform-nvim
       neogit
       orgmode
+      vimtex
       (typst-preview-nvim.overrideAttrs {
         postPatch = ''
           substituteInPlace lua/typst-preview/config.lua \
