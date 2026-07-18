@@ -1,3 +1,6 @@
+[tack]
+recomposable = true
+
 [shorturls]
 gh = "github:{path}"
 nixpkgs = "https://channels.nixos.org/{path}/nixexprs.tar.xz"
