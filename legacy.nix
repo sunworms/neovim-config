@@ -1,10 +1,21 @@
+{
+  pkgs ? null,
+}:
+
 let
   inputs = import ./.tack;
-  system = builtins.currentSystem or "x86_64-linux";
-  pkgs = import inputs.nixpkgs {
-    inherit system;
-    config.allowUnfree = true;
-  };
+
+  finalPkgs =
+    if pkgs != null then
+      pkgs
+    else
+      import inputs.nixpkgs {
+        config.allowUnfree = true;
+      };
+
   mnw = import inputs.mnw;
 in
-import ./default.nix { inherit pkgs mnw; }
+import ./default.nix {
+  pkgs = finalPkgs;
+  inherit mnw;
+}
