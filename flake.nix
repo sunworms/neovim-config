@@ -22,7 +22,6 @@
       packages = forAllSystems (pkgs: {
         default = import ./default.nix {
           inherit pkgs mnw;
-          small = false;
         };
       });
       devShells = forAllSystems (pkgs: {

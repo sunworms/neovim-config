@@ -1,10 +1,5 @@
-let
-  inputs = import ./.tack;
-  pkgs = import inputs.nixpkgs {
-    config.allowUnfree = true;
-  };
-  mnw = import inputs.mnw;
-in
+{ pkgs, mnw }:
+
 mnw.lib.wrap pkgs {
   neovim = pkgs.neovim-unwrapped;
   luaFiles = [
