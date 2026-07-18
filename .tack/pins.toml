@@ -4,8 +4,6 @@ nixpkgs = "https://channels.nixos.org/{path}/nixexprs.tar.xz"
 
 [inputs.nixpkgs]
 url = "nixpkgs:nixos-unstable"
-type = "fetch"
 
 [inputs.mnw]
 url = "gh:Gerg-L/mnw"
-type = "fetch"
