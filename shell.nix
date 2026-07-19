@@ -3,7 +3,7 @@ let
   pkgs = import inputs.nixpkgs {
     config.allowUnfree = true;
   };
-  neovim = import ./.;
+  neovim = import ./legacy.nix { inherit pkgs; };
 in
 pkgs.mkShellNoCC {
   packages = [
