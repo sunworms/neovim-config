@@ -31,7 +31,7 @@ return {
 			desc = "Open today's journal",
 		})
 
-		vim.keymap.set("n", "<leader>ot", function()
+		vim.keymap.set("n", "<leader>od", function()
 			vim.cmd("edit ~/Documents/gdrive/org/todo.org")
 		end, {
 			desc = "Open TODO file",
