@@ -5,7 +5,7 @@ return {
 		require("conform").setup({
 			formatters_by_ft = {
 				lua = { "stylua" },
-				nix = { "nixfmt" },
+				nix = { "alejandra" },
 				go = { "goimports", "gofmt" },
 				rust = { "rustfmt" },
 				java = { "google-java-format" },
