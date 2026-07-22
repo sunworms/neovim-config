@@ -1,5 +1,7 @@
-{ pkgs, mnw }:
-
+{
+  pkgs,
+  mnw,
+}:
 mnw.lib.wrap pkgs {
   neovim = pkgs.neovim-unwrapped;
   luaFiles = [
