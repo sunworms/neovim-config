@@ -1,4 +1,12 @@
 {
+  "base46": {
+    "type": "github",
+    "owner": "AvengeMedia",
+    "repo": "base46",
+    "rev": "83522e02c6c3b4ea901c4bffd9e0a5e0371c1fe6",
+    "narHash": "sha256-kwDMC6rYzJYECmGnwn8JiAbffUq7hAXcUH6gPSkk2uI=",
+    "lastModified": 1784785285
+  },
   "mnw": {
     "type": "github",
     "owner": "Gerg-L",
@@ -9,8 +17,8 @@
   },
   "nixpkgs": {
     "type": "tarball",
-    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1037713.241313f4e8e5/nixexprs.tar.xz",
-    "rev": "241313f4e8e508cb9b13278c2b0fa25b9ca27163",
-    "narHash": "sha256-WhdsTtaih3DgTPP/PX023b36UNQyMzEoi6GkPyGx0y4="
+    "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1040357.e2587caef70c/nixexprs.tar.xz",
+    "rev": "e2587caef70cea85dd97d7daab492899902dbf5d",
+    "narHash": "sha256-vwxWgF+Gj276WznzGb1LxGsK/39HaQwgQXiU3EkC844="
   }
 }

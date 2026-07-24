@@ -122,33 +122,7 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = apply_transparency,
 })
 
-local theme_file = vim.fn.expand("~/.config/matugen/neovim.lua")
-
-local function apply_matugen_theme()
-	local ok, theme = pcall(dofile, theme_file)
-	if ok and type(theme) == "table" and theme.setup then
-		theme.setup()
-	else
-		vim.cmd.colorscheme("base16-catppuccin-mocha")
-	end
-
-	apply_transparency()
-end
-
-vim.api.nvim_create_autocmd("UIEnter", {
-	once = true,
-	callback = apply_matugen_theme,
-})
-
-local signal = vim.uv.new_signal()
-signal:start(
-	"sigusr1",
-	vim.schedule_wrap(function()
-		package.loaded["lualine"] = nil
-		apply_matugen_theme()
-		require("lualine").setup({ options = { theme = "base16" } })
-	end)
-)
+apply_transparency()
 
 local target = vim.fn.argv(0)
 local stat = target and vim.uv.fs_stat(target)

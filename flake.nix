@@ -13,11 +13,10 @@
       "x86_64-darwin"
     ];
     forAllSystems = function: lib.genAttrs supportedSystems (system: function inputs.nixpkgs.legacyPackages.${system});
-    mnw = inputs.mnw;
   in {
     packages = forAllSystems (pkgs: {
       default = import ./default.nix {
-        inherit pkgs mnw;
+        inherit pkgs inputs;
       };
     });
     devShells = forAllSystems (pkgs: {

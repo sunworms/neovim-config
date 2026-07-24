@@ -2,10 +2,6 @@ return {
 	"lualine.nvim",
 	event = "DeferredUIEnter",
 	after = function()
-		require("lualine").setup({
-			options = {
-				theme = "base16",
-			},
-		})
+		require("lualine").setup({})
 	end,
 }

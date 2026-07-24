@@ -1,8 +1,8 @@
 {
   pkgs,
-  mnw,
+  inputs,
 }:
-mnw.lib.wrap pkgs {
+inputs.mnw.lib.wrap pkgs {
   neovim = pkgs.neovim-unwrapped;
   luaFiles = [
     "${./nvim/init.lua}"
@@ -12,7 +12,12 @@ mnw.lib.wrap pkgs {
       lz-n
       friendly-snippets
       nvim-web-devicons
-      base16-nvim
+      (pkgs.vimUtils.buildVimPlugin {
+        pname = "base46";
+        version = "dirty";
+        src = inputs.base46;
+        doCheck = false;
+      })
       oil-nvim
       nvim-treesitter.withAllGrammars
     ];

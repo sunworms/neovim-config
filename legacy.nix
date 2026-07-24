@@ -8,10 +8,8 @@
       import inputs.nixpkgs {
         config.allowUnfree = true;
       };
-
-  mnw = import inputs.mnw;
 in
   import ./default.nix {
     pkgs = finalPkgs;
-    inherit mnw;
+    inherit inputs;
   }
