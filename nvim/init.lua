@@ -122,7 +122,17 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = apply_transparency,
 })
 
-apply_transparency()
+local home = vim.fn.expand("~")
+local palette_path = home .. "/.config/matugen/themes/nvim-colors.json"
+
+if vim.fn.filereadable(palette_path) == 1 then
+	require("matugen").setup({
+		load_theme = true,
+		palette_path = palette_path,
+	})
+else
+	vim.cmd.colorscheme("default")
+end
 
 local target = vim.fn.argv(0)
 local stat = target and vim.uv.fs_stat(target)

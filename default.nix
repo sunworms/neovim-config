@@ -13,9 +13,9 @@ inputs.mnw.lib.wrap pkgs {
       friendly-snippets
       nvim-web-devicons
       (pkgs.vimUtils.buildVimPlugin {
-        pname = "base46";
+        pname = "matugen.nvim";
         version = "dirty";
-        src = inputs.base46;
+        src = inputs.matugen;
         doCheck = false;
       })
       oil-nvim

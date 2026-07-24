@@ -1,11 +1,11 @@
 {
-  "base46": {
+  "matugen": {
     "type": "github",
-    "owner": "AvengeMedia",
-    "repo": "base46",
-    "rev": "83522e02c6c3b4ea901c4bffd9e0a5e0371c1fe6",
-    "narHash": "sha256-kwDMC6rYzJYECmGnwn8JiAbffUq7hAXcUH6gPSkk2uI=",
-    "lastModified": 1784785285
+    "owner": "Senal-D-A-Gunaratna",
+    "repo": "matugen.nvim",
+    "rev": "2d13f5e5685723cf67961adf144e9f0fc87a4912",
+    "narHash": "sha256-0NXzA4lrV/LVeywSc23quZC5pNB8AyGUxWYsK1Gg9sE=",
+    "lastModified": 1784790832
   },
   "mnw": {
     "type": "github",
