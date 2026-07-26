@@ -12,12 +12,7 @@ inputs.mnw.lib.wrap pkgs {
       lz-n
       friendly-snippets
       nvim-web-devicons
-      (pkgs.vimUtils.buildVimPlugin {
-        pname = "matugen.nvim";
-        version = "dirty";
-        src = inputs.matugen;
-        doCheck = false;
-      })
+      base16-nvim
       oil-nvim
       nvim-treesitter.withAllGrammars
     ];

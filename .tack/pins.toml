@@ -10,7 +10,3 @@ url = "nixpkgs:nixos-unstable"
 
 [inputs.mnw]
 url = "gh:Gerg-L/mnw"
-
-[inputs.matugen]
-url = "gh:Senal-D-A-Gunaratna/matugen.nvim"
-type = "fetch"
