@@ -123,9 +123,9 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 })
 
 require("matugen").setup({
-	load_theme = true,
-	palette_path = vim.fn.expand("~/.config/matugen/nvim-colors.json"),
+	colors_path = vim.fn.expand("~/.config/matugen/colors.json"),
 })
+vim.cmd.colorscheme("matugen")
 
 local target = vim.fn.argv(0)
 local stat = target and vim.uv.fs_stat(target)

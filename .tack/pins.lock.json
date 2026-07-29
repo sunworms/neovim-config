@@ -1,11 +1,11 @@
 {
   "matugen": {
     "type": "github",
-    "owner": "Senal-D-A-Gunaratna",
+    "owner": "daedlock",
     "repo": "matugen.nvim",
-    "rev": "cabdc983175c8474b85f415f1aa4ede52792d0e0",
-    "narHash": "sha256-++e0uGFypNUu2Dn3lOW6lc2pCND9Sf/UFTAd/ice6a0=",
-    "lastModified": 1785336162
+    "rev": "835a2f4c7b32e5e0fa57f3595a04a638ff74d8bc",
+    "narHash": "sha256-J5bAD07kF1a7BAWzzIGSsQKns4rBWb1tK606Bh0pR00=",
+    "lastModified": 1777401100
   },
   "mnw": {
     "type": "github",
