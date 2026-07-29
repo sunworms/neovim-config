@@ -1,4 +1,12 @@
 {
+  "matugen": {
+    "type": "github",
+    "owner": "Senal-D-A-Gunaratna",
+    "repo": "matugen.nvim",
+    "rev": "cabdc983175c8474b85f415f1aa4ede52792d0e0",
+    "narHash": "sha256-++e0uGFypNUu2Dn3lOW6lc2pCND9Sf/UFTAd/ice6a0=",
+    "lastModified": 1785336162
+  },
   "mnw": {
     "type": "github",
     "owner": "Gerg-L",
