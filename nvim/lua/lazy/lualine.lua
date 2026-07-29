@@ -2,8 +2,9 @@ return {
 	"lualine.nvim",
 	event = "DeferredUIEnter",
 	after = function()
+		vim.opt.rtp:append("~/.config/nvim")
 		require("lualine").setup({
-			options = { theme = vim.fn.expand("~/.config/nvim/lua/lualine/themes/base46-matugen.lua") },
+			options = { theme = "base46-matugen" },
 		})
 	end,
 }
