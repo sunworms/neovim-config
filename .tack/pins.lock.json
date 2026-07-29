@@ -1,11 +1,11 @@
 {
-  "matugen": {
+  "base46": {
     "type": "github",
-    "owner": "daedlock",
-    "repo": "matugen.nvim",
-    "rev": "835a2f4c7b32e5e0fa57f3595a04a638ff74d8bc",
-    "narHash": "sha256-J5bAD07kF1a7BAWzzIGSsQKns4rBWb1tK606Bh0pR00=",
-    "lastModified": 1777401100
+    "owner": "AvengeMedia",
+    "repo": "base46",
+    "rev": "83522e02c6c3b4ea901c4bffd9e0a5e0371c1fe6",
+    "narHash": "sha256-kwDMC6rYzJYECmGnwn8JiAbffUq7hAXcUH6gPSkk2uI=",
+    "lastModified": 1784785285
   },
   "mnw": {
     "type": "github",

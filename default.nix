@@ -13,8 +13,9 @@ inputs.mnw.lib.wrap pkgs {
       friendly-snippets
       nvim-web-devicons
       (pkgs.vimUtils.buildVimPlugin {
-        name = "matugen.nvim";
-        src = inputs.matugen;
+        name = "base46";
+        src = inputs.base46;
+        doCheck = false;
       })
       oil-nvim
       nvim-treesitter.withAllGrammars

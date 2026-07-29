@@ -122,10 +122,26 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = apply_transparency,
 })
 
-require("matugen").setup({
-	colors_path = vim.fn.expand("~/.config/matugen/colors.json"),
-})
-vim.cmd.colorscheme("matugen")
+local uv = vim.uv or vim.loop
+local colors = vim.fn.expand("~/.config/nvim/colors/base46-matugen.lua")
+
+local function exists(path)
+	return uv.fs_stat(path) ~= nil
+end
+
+local has_colors = exists(colors)
+
+local colorscheme_name = "base46-catppuccin"
+
+if has_colors then
+	vim.opt.rtp:append("~/.config/nvim")
+	colorscheme_name = "base46-matugen"
+end
+
+local ok = pcall(vim.cmd.colorscheme, colorscheme_name)
+if not ok then
+	vim.cmd.colorscheme("base46-catppuccin")
+end
 
 local target = vim.fn.argv(0)
 local stat = target and vim.uv.fs_stat(target)

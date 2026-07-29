@@ -11,6 +11,6 @@ url = "nixpkgs:nixos-unstable"
 [inputs.mnw]
 url = "gh:Gerg-L/mnw"
 
-[inputs.matugen]
-url = "gh:daedlock/matugen.nvim"
+[inputs.base46]
+url = "gh:AvengeMedia/base46"
 type = "fetch"
