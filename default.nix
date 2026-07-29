@@ -25,7 +25,6 @@ inputs.mnw.lib.wrap pkgs {
       blink-cmp
       nvim-autopairs
       lualine-nvim
-      transparent-nvim
       nvim-lspconfig
       conform-nvim
       neogit
