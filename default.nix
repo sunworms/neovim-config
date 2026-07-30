@@ -17,10 +17,10 @@ inputs.mnw.lib.wrap pkgs {
         src = inputs.base46;
         doCheck = false;
       })
-      oil-nvim
       nvim-treesitter.withAllGrammars
     ];
     opt = with pkgs.vimPlugins; [
+      yazi-nvim
       fzf-lua
       blink-cmp
       nvim-autopairs
@@ -48,6 +48,5 @@ inputs.mnw.lib.wrap pkgs {
   extraBinPath = with pkgs; [
     lua-language-server
     stylua
-    fzf
   ];
 }

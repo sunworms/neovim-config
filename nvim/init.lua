@@ -197,17 +197,6 @@ if not ok then
 	vim.cmd.colorscheme("base46-catppuccin")
 end
 
-local target = vim.fn.argv(0)
-local stat = target and vim.uv.fs_stat(target)
-if stat and stat.type == "directory" then
-	vim.api.nvim_create_autocmd("VimEnter", {
-		once = true,
-		callback = function()
-			require("oil").setup()
-		end,
-	})
-end
-
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
 		local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
