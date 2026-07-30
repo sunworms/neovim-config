@@ -95,33 +95,6 @@ key.set("v", "<Space>p", '"+p')
 
 vim.o.winborder = "rounded"
 
-local function apply_transparency()
-	local groups = {
-		"Normal",
-		"NormalNC",
-		"NormalFloat",
-		"FloatBorder",
-		"SignColumn",
-		"EndOfBuffer",
-		"LineNr",
-		"CursorLineNr",
-		"VertSplit",
-		"WinSeparator",
-		"Pmenu",
-		"TabLine",
-		"TabLineFill",
-		"StatusLine",
-		"StatusLineNC",
-	}
-	for _, group in ipairs(groups) do
-		vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
-	end
-end
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = apply_transparency,
-})
-
 local uv = vim.uv or vim.loop
 local colors = vim.fn.expand("~/.config/nvim/colors/base46-matugen.lua")
 
