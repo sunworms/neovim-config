@@ -12,7 +12,7 @@ inputs.mnw.lib.wrap pkgs {
       lz-n
       friendly-snippets
       nvim-web-devicons
-      catppuccin-nvim
+      base16-nvim
       nvim-treesitter.withAllGrammars
     ];
     opt = with pkgs.vimPlugins; [
