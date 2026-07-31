@@ -41,7 +41,7 @@ inputs.mnw.lib.wrap pkgs {
 
     dev.default = {
       pure = "${./nvim}";
-      impure = "/home/sunny/Documents/neovim-config/nvim";
+      impure = "/home/sunny/Projects/neovim-config/nvim";
     };
   };
 
