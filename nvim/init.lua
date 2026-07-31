@@ -95,26 +95,7 @@ key.set("v", "<Space>p", '"+p')
 
 vim.o.winborder = "rounded"
 
-local uv = vim.uv or vim.loop
-local colors = vim.fn.expand("~/.config/nvim/colors/base46-matugen.lua")
-
-local function exists(path)
-	return uv.fs_stat(path) ~= nil
-end
-
-local has_colors = exists(colors)
-
-local colorscheme_name = "base46-catppuccin"
-
-if has_colors then
-	vim.opt.rtp:append("~/.config/nvim")
-	colorscheme_name = "base46-matugen"
-end
-
-local ok = pcall(vim.cmd.colorscheme, colorscheme_name)
-if not ok then
-	vim.cmd.colorscheme("base46-catppuccin")
-end
+vim.cmd.colorscheme("catppuccin-mocha")
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
