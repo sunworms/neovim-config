@@ -1,9 +1,9 @@
 let
-  inputs = import ./.tack;
+  inputs = import ./npins;
   pkgs = import inputs.nixpkgs {
     config.allowUnfree = true;
   };
-  neovim = import ./legacy.nix {inherit pkgs;};
+  neovim = import ./. {inherit pkgs;};
 in
   pkgs.mkShellNoCC {
     packages = [
