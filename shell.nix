@@ -1,5 +1,5 @@
 let
-  inputs = import ./.tack;
+  inputs = import ./npins;
   pkgs = import inputs.nixpkgs {
     config.allowUnfree = true;
   };

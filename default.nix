@@ -1,5 +1,5 @@
 {pkgs ? null}: let
-  inputs = import ./.tack;
+  inputs = import ./npins;
 
   finalPkgs =
     if pkgs != null
