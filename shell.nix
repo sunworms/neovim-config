@@ -1,6 +1,11 @@
 let
-  inputs = import ./npins;
-  pkgs = import inputs.nixpkgs {
+  inputs = import ./_sources/generated.nix {
+    inherit (builtins) fetchurl;
+    fetchgit = null;
+    fetchFromGitHub = null;
+    dockerTools = null;
+  };
+  pkgs = import inputs.nixpkgs.src {
     config.allowUnfree = true;
   };
   neovim = import ./. {inherit pkgs;};
