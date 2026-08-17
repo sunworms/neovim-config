@@ -15,16 +15,16 @@
     },
     "nixpkgs": {
         "cargoLock": null,
-        "date": "2026-08-13",
+        "date": "2026-08-16",
         "extract": null,
         "name": "nixpkgs",
         "passthru": null,
         "pinned": false,
         "src": {
-            "sha256": "sha256-yNJd40f11EzXBjSByCB7IPpeFFAdeoSKKM67dGkfFoU=",
+            "sha256": "sha256-FBJRXmbGXiSUDvYEbfLYRkckayyZ6SK1UEqhCrIZ2Cs=",
             "type": "tarball",
-            "url": "https://github.com/NixOS/nixpkgs/archive/0e251e24a4f24e036a084b6b4b2d2491af4167f4.tar.gz"
+            "url": "https://github.com/NixOS/nixpkgs/archive/e5bdc4a41d4c072fe1e3787eaa0320a384741d44.tar.gz"
         },
-        "version": "0e251e24a4f24e036a084b6b4b2d2491af4167f4"
+        "version": "e5bdc4a41d4c072fe1e3787eaa0320a384741d44"
     }
 }
