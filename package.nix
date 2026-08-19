@@ -14,6 +14,7 @@
       nvim-web-devicons
       base16-nvim
       nvim-treesitter.withAllGrammars
+      gitsigns-nvim
     ];
     opt = with pkgs.vimPlugins; [
       yazi-nvim
