@@ -1,16 +1,11 @@
 {pkgs ? null}: let
-  inputs = import ./_sources/generated.nix {
-    inherit (builtins) fetchurl;
-    fetchgit = null;
-    fetchFromGitHub = null;
-    dockerTools = null;
-  };
+  inputs = import ./npins;
 
   finalPkgs =
     if pkgs != null
     then pkgs
     else
-      import inputs.nixpkgs.src {
+      import inputs.nixpkgs {
         config.allowUnfree = true;
       };
 in
