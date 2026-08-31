@@ -144,9 +144,11 @@ local signal = vim.uv.new_signal()
 signal:start(
 	"sigusr1",
 	vim.schedule_wrap(function()
+		package.loaded["mini.statusline"] = nil
 		package.loaded["lualine"] = nil
 		apply_matugen_theme()
 		require("lualine").setup({ options = { theme = "base16" } })
+		require("mini.statusline").setup()
 	end)
 )
 

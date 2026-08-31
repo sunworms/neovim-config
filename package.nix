@@ -21,9 +21,9 @@
       fzf-lua
       blink-cmp
       nvim-autopairs
-      lualine-nvim
       nvim-lspconfig
       conform-nvim
+      mini-statusline
       neogit
       orgmode
       vimtex
