@@ -17,10 +17,10 @@
   };
   nixpkgs = {
     pname = "nixpkgs";
-    version = "26.11pre1060451.56c02bc00adc";
+    version = "26.11pre1064150.d2f679497988";
     src = fetchTarball {
-      url = "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1060451.56c02bc00adc/nixexprs.tar.zst";
-      sha256 = "sha256-FoOSoBG7tEvOlGRTpWnVdY506Ner4y7r7UYO3OGgmE8=";
+      url = "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1064150.d2f679497988/nixexprs.tar.zst";
+      sha256 = "sha256-q/WSLUzcry6IHERr2wZ/Si63RvoHyez7AZ6P+oLDJ5k=";
     };
   };
 }
