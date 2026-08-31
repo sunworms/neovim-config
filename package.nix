@@ -12,7 +12,6 @@
       lz-n
       friendly-snippets
       nvim-web-devicons
-      base16-nvim
       nvim-treesitter.withAllGrammars
       gitsigns-nvim
     ];

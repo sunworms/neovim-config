@@ -106,33 +106,6 @@ end, { desc = "Clear search highlights and matches", silent = true })
 
 vim.o.winborder = "rounded"
 
-local function apply_transparency()
-	local groups = {
-		"Normal",
-		"NormalNC",
-		"NormalFloat",
-		"FloatBorder",
-		"SignColumn",
-		"EndOfBuffer",
-		"LineNr",
-		"CursorLineNr",
-		"VertSplit",
-		"WinSeparator",
-		"Pmenu",
-		"TabLine",
-		"TabLineFill",
-		"StatusLine",
-		"StatusLineNC",
-	}
-	for _, group in ipairs(groups) do
-		vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
-	end
-end
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = apply_transparency,
-})
-
 local theme_file = vim.fn.expand("~/.cache/noctalia/colors.vim")
 
 local function apply_noctalia_theme()
@@ -141,8 +114,6 @@ local function apply_noctalia_theme()
 	else
 		vim.cmd.colorscheme("catppuccin")
 	end
-
-	apply_transparency()
 end
 
 vim.api.nvim_create_autocmd("UIEnter", {
