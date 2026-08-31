@@ -34,8 +34,8 @@ for _, plugin in ipairs(disabled_built_ins) do
 end
 
 -- Set the leader key to the spacebar
-vg.mapleader = " "
-vg.maplocalleader = " "
+vg.mapleader = ","
+vg.maplocalleader = "\\"
 vg.loaded_perl_provider = 0
 vg.loaded_ruby_provider = 0
 vg.loaded_node_provider = 0
@@ -87,11 +87,22 @@ opt.whichwrap:append("<,>,h,l,[,]")
 
 local key = vim.keymap
 
-key.set("n", "<Space>y", '"+y')
-key.set("v", "<Space>y", '"+y')
+key.set("n", "<leader>y", '"+y')
+key.set("v", "<leader>y", '"+y')
 
-key.set("n", "<Space>p", '"+p')
-key.set("v", "<Space>p", '"+p')
+key.set("n", "<leader>p", '"+p')
+key.set("v", "<leader>p", '"+p')
+
+key.set("n", "<C-h>", "<C-w>h")
+key.set("n", "<C-j>", "<C-w>j")
+key.set("n", "<C-k>", "<C-w>k")
+key.set("n", "<C-l>", "<C-w>l")
+key.set("n", "<C-v>", "<C-w>v")
+
+key.set("n", "<leader><space>", function()
+	vim.cmd("nohlsearch")
+	vim.fn.clearmatches()
+end, { desc = "Clear search highlights and matches", silent = true })
 
 vim.o.winborder = "rounded"
 
