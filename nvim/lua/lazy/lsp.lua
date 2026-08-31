@@ -11,7 +11,7 @@ return {
 
 		local langs = { "nix-1", "nix-2", "latex", "typst", "lua", "rust", "go", "java" }
 		for _, lang in ipairs(langs) do
-			require("lazy.lsp." .. lang)(capabilities)
+			require("lsp." .. lang)(capabilities)
 		end
 
 		vim.diagnostic.config({
