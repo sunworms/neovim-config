@@ -122,14 +122,13 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 	callback = apply_transparency,
 })
 
-local theme_file = vim.fn.expand("~/.config/nvim/lua/matugen.lua")
+local theme_file = vim.fn.expand("~/.cache/noctalia/colors.vim")
 
-local function apply_matugen_theme()
-	local ok, theme = pcall(dofile, theme_file)
-	if ok and type(theme) == "table" and theme.setup then
-		theme.setup()
+local function apply_noctalia_theme()
+	if vim.loop.fs_stat(theme_file) then
+		vim.cmd.source(theme_file)
 	else
-		vim.cmd.colorscheme("base16-catppuccin-mocha")
+		vim.cmd.colorscheme("catppuccin")
 	end
 
 	apply_transparency()
@@ -137,7 +136,7 @@ end
 
 vim.api.nvim_create_autocmd("UIEnter", {
 	once = true,
-	callback = apply_matugen_theme,
+	callback = apply_noctalia_theme,
 })
 
 local signal = vim.uv.new_signal()
@@ -145,9 +144,7 @@ signal:start(
 	"sigusr1",
 	vim.schedule_wrap(function()
 		package.loaded["mini.statusline"] = nil
-		package.loaded["lualine"] = nil
-		apply_matugen_theme()
-		require("lualine").setup({ options = { theme = "base16" } })
+		apply_noctalia_theme()
 		require("mini.statusline").setup()
 	end)
 )
