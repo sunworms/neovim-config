@@ -24,8 +24,6 @@
       nvim-lspconfig
       conform-nvim
       mini-statusline
-      neogit
-      orgmode
       vimtex
       (typst-preview-nvim.overrideAttrs {
         postPatch = ''
