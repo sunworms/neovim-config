@@ -24,7 +24,6 @@ local disabled_built_ins = {
 	"matchit",
 	"matchparen",
 	"editorconfig",
-	"man",
 	"osc52",
 	"shada",
 }
