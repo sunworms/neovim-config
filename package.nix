@@ -12,10 +12,10 @@
       lz-n
       friendly-snippets
       nvim-web-devicons
-      nvim-treesitter.withAllGrammars
-      gitsigns-nvim
     ];
     opt = with pkgs.vimPlugins; [
+      nvim-treesitter.withAllGrammars
+      gitsigns-nvim
       yazi-nvim
       fzf-lua
       blink-cmp
