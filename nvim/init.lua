@@ -32,7 +32,7 @@ for _, plugin in ipairs(disabled_built_ins) do
 	vg["loaded_" .. plugin] = 1
 end
 
--- Set the leader key to the spacebar
+-- Set the leader key to comma
 vg.mapleader = ","
 vg.maplocalleader = "\\"
 vg.loaded_perl_provider = 0
@@ -58,6 +58,7 @@ opt.updatetime = 500
 opt.number = true
 opt.cursorline = true
 opt.signcolumn = "yes"
+opt.showmode = false
 
 -- Indentation
 opt.expandtab = true
