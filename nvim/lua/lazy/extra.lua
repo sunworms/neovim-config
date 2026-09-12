@@ -14,4 +14,10 @@ return {
 		"gitsigns.nvim",
 		event = "BufReadPost",
 	},
+	{
+		"oil-git.nvim",
+		dependencies = {
+			"oil.nvim",
+		},
+	},
 }

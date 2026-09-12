@@ -16,7 +16,10 @@
     opt = with pkgs.vimPlugins; [
       nvim-treesitter.withAllGrammars
       gitsigns-nvim
-      yazi-nvim
+      oil-nvim
+      (oil-git-nvim.overrideAttrs {
+        dependencies = [];
+      })
       fzf-lua
       blink-cmp
       nvim-autopairs
