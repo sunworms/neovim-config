@@ -2,7 +2,11 @@ return {
 	"oil.nvim",
 	event = "DeferredUIEnter",
 	after = function()
-		require("oil").setup()
+		require("oil").setup({
+			view_options = {
+				show_hidden = true,
+			},
+		})
 		vim.api.nvim_create_autocmd("VimEnter", {
 			callback = function()
 				local arg = vim.fn.argv(0)
