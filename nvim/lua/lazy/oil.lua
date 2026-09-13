@@ -1,6 +1,6 @@
 return {
 	"oil.nvim",
-	cmd = "Oil",
+	event = "DeferredUIEnter",
 	after = function()
 		require("oil").setup({
 			view_options = {
