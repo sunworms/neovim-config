@@ -20,6 +20,7 @@
       (oil-git-nvim.overrideAttrs {
         dependencies = [];
       })
+      neogit
       fzf-lua
       blink-cmp
       nvim-autopairs
