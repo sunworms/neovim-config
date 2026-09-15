@@ -2,6 +2,9 @@ local M = {}
 
 local journal_dir = vim.fn.expand("$HOME/Documents/gdrive/journal")
 
+local CHECKBOX_EMPTY = "☐"
+local CHECKBOX_DONE = "☒"
+
 local function ensure_dir(dir)
 	if vim.fn.isdirectory(dir) == 0 then
 		vim.fn.mkdir(dir, "p")
@@ -21,7 +24,7 @@ function M.journal(date)
 	end
 
 	local dir = string.format("%s/%s/%s", journal_dir, y, m)
-	local file = string.format("%s/%s.md", dir, date)
+	local file = string.format("%s/%s.typ", dir, date)
 
 	ensure_dir(dir)
 
@@ -30,17 +33,17 @@ function M.journal(date)
 		local weekday = os.date("%A", timestamp)
 
 		local template = {
-			"# " .. weekday .. ", " .. date,
+			"= " .. weekday .. ", " .. date,
 			"",
-			"## Tasks",
+			"== Tasks",
 			"",
-			"- [ ] ",
+			"- " .. CHECKBOX_EMPTY .. " ",
 			"",
-			"## Notes",
+			"== Notes",
 			"",
 			"",
 			"",
-			"## Thoughts",
+			"== Thoughts",
 			"",
 			"",
 		}
@@ -56,29 +59,29 @@ function M.journal_relative(days)
 end
 
 function M.todo()
-	local file = journal_dir .. "/todo.md"
+	local file = journal_dir .. "/todo.typ"
 	if vim.fn.filereadable(file) == 0 then
 		ensure_dir(journal_dir)
-		vim.fn.writefile({ "# TODO", "", "## Important", "", "## Research", "", "## Personal", "", "" }, file)
+		vim.fn.writefile({ "= TODO", "", "== Important", "", "== Research", "", "== Personal", "", "" }, file)
 	end
 	edit_file(file)
 end
 
 function M.quicknote()
-	local file = journal_dir .. "/quicknote.md"
+	local file = journal_dir .. "/quicknote.typ"
 	if vim.fn.filereadable(file) == 0 then
 		ensure_dir(journal_dir)
-		vim.fn.writefile({ "# Quick Notes", "", "" }, file)
+		vim.fn.writefile({ "= Quick Notes", "", "" }, file)
 	end
 	edit_file(file)
 end
 
 function M.toggle_todo()
 	local line = vim.api.nvim_get_current_line()
-	if line:find("^%s*-%s*%[% %]") then
-		vim.api.nvim_set_current_line((line:gsub("%[% %]", "[x]", 1)))
-	elseif line:find("^%s*-%s*%[[xX]%]") then
-		vim.api.nvim_set_current_line((line:gsub("%[[xX]%]", "[ ]", 1)))
+	if line:find("^%s*-%s*" .. CHECKBOX_EMPTY) then
+		vim.api.nvim_set_current_line((line:gsub(CHECKBOX_EMPTY, CHECKBOX_DONE, 1)))
+	elseif line:find("^%s*-%s*" .. CHECKBOX_DONE) then
+		vim.api.nvim_set_current_line((line:gsub(CHECKBOX_DONE, CHECKBOX_EMPTY, 1)))
 	else
 		vim.notify("Not a TODO line", vim.log.levels.WARN)
 	end
@@ -86,13 +89,14 @@ end
 
 function M.add_todo()
 	local row = vim.api.nvim_win_get_cursor(0)[1]
-	vim.api.nvim_buf_set_lines(0, row, row, false, { "- [ ] " })
+	vim.api.nvim_buf_set_lines(0, row, row, false, { "- " .. CHECKBOX_EMPTY .. " " })
+	-- CHECKBOX_EMPTY is a 3-byte UTF-8 char, so cursor lands after "- ☐ " (2 + 3 + 1 = 6 bytes)
 	vim.api.nvim_win_set_cursor(0, { row + 1, 6 })
 	vim.cmd("startinsert!")
 end
 
 function M.timestamp()
-	local time_str = os.date("### %H:%M")
+	local time_str = os.date("=== %H:%M")
 	local row = vim.api.nvim_win_get_cursor(0)[1]
 	vim.api.nvim_buf_set_lines(0, row, row, false, { time_str, "" })
 	vim.api.nvim_win_set_cursor(0, { row + 1, 0 })
@@ -103,7 +107,7 @@ function M.grep(pattern)
 		vim.notify("Usage: JournalGrep pattern", vim.log.levels.ERROR)
 		return
 	end
-	local files = vim.fn.glob(journal_dir .. "/**/*.md", true, true)
+	local files = vim.fn.glob(journal_dir .. "/**/*.typ", true, true)
 	if #files == 0 then
 		vim.notify("No journal files found", vim.log.levels.WARN)
 		return
@@ -114,7 +118,7 @@ function M.grep(pattern)
 end
 
 function M.vimgrep_pattern(pat)
-	local files = vim.fn.glob(journal_dir .. "/**/*.md", true, true)
+	local files = vim.fn.glob(journal_dir .. "/**/*.typ", true, true)
 	if #files == 0 then
 		vim.notify("No journal files found", vim.log.levels.WARN)
 		return
@@ -125,7 +129,7 @@ function M.vimgrep_pattern(pat)
 end
 
 function M.random()
-	local files = vim.fn.glob(journal_dir .. "/????/??/????-??-??.md", true, true)
+	local files = vim.fn.glob(journal_dir .. "/????/??/????-??-??.typ", true, true)
 	if #files == 0 then
 		vim.notify("No journal entries found", vim.log.levels.WARN)
 		return
@@ -171,10 +175,10 @@ function M.setup()
 		M.grep(opts.args)
 	end, { nargs = "+" })
 	cmd("JournalTodos", function()
-		M.vimgrep_pattern([[^\s*-\s*\[ \]])
+		M.vimgrep_pattern([[^\s*-\s*☐]])
 	end, {})
 	cmd("JournalDone", function()
-		M.vimgrep_pattern([[^\s*-\s*\[[xX]\]])
+		M.vimgrep_pattern([[^\s*-\s*☒]])
 	end, {})
 	cmd("JournalRandom", function()
 		M.random()
