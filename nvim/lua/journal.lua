@@ -1,6 +1,12 @@
 local M = {}
 
-local journal_dir = vim.fn.expand("$HOME/Documents/gdrive/journal")
+local journal_dir
+
+if vim.fn.has("android") == 1 then
+	journal_dir = vim.fn.expand("~/storage/documents/foldersync/journal")
+else
+	journal_dir = vim.fn.expand("~/Documents/gdrive/journal")
+end
 
 local CHECKBOX_EMPTY = "☐"
 local CHECKBOX_DONE = "☒"
