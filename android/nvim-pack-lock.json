@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "nvim-treesitter": {
+      "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    }
+  }
+}
