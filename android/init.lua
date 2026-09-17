@@ -28,3 +28,23 @@ vim.keymap.set("n", "<leader>jo", "<cmd>Tomorrow<CR>")
 vim.keymap.set("n", "<leader>jg", ":JournalGrep ")
 vim.keymap.set("n", "<leader>ju", "<cmd>JournalTodos<CR>")
 vim.keymap.set("n", "<leader>jd", "<cmd>JournalDone<CR>")
+
+vim.pack.add({
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
+})
+
+require("nvim-treesitter").setup({
+	ensure_installed = { "typst" },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "typst" },
+	callback = function()
+		vim.treesitter.start()
+		vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+		vim.wo[0][0].foldmethod = "expr"
+		vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+	end,
+})
+
+vim.opt.foldenable = false
