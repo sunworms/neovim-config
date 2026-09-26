@@ -8,20 +8,20 @@
 {
   mnw = {
     pname = "mnw";
-    version = "0151d9fa87992cbeb67c86616fb9170dcec830b6";
+    version = "a582dbedf7c8ec7effa6939ac5bdd23b27267d1b";
     src = fetchTarball {
-      url = "https://github.com/Gerg-L/mnw/archive/0151d9fa87992cbeb67c86616fb9170dcec830b6.tar.gz";
-      sha256 = "sha256-HRn4O1X2ShYtbq5Egji72/aemyc2cIQicjRZD9hBqM8=";
+      url = "https://github.com/Gerg-L/mnw/archive/a582dbedf7c8ec7effa6939ac5bdd23b27267d1b.tar.gz";
+      sha256 = "sha256-6IWPAMEotKY/nQvs1kU6qwMwCXTeW5HlOhw2RwFHFdI=";
     };
-    date = "2026-07-15";
+    date = "2026-09-25";
   };
   nixpkgs = {
     pname = "nixpkgs";
-    version = "6774f7bc253789b113a4f39285dc0fa100abeacc";
+    version = "e94cb152ed51bd6e24eb4a41f1460252beb52cd2";
     src = fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/6774f7bc253789b113a4f39285dc0fa100abeacc.tar.gz";
-      sha256 = "sha256-MYiI+CzL0tuWgRPjGsKCDHqYs2T3OzMlMQWOYWG0qso=";
+      url = "https://github.com/NixOS/nixpkgs/archive/e94cb152ed51bd6e24eb4a41f1460252beb52cd2.tar.gz";
+      sha256 = "sha256-VVTPf+Hyd5ebpjBMHmrLMSBIeW6ls48Bqtosj7CNKLA=";
     };
-    date = "2026-09-22";
+    date = "2026-09-25";
   };
 }
