@@ -6,3 +6,7 @@ fetch.tarball = "https://github.com/NixOS/nixpkgs/archive/$ver.tar.gz"
 [mnw]
 src.git = "https://github.com/Gerg-L/mnw"
 fetch.tarball = "https://github.com/Gerg-L/mnw/archive/$ver.tar.gz"
+
+[typst-concealer]
+src.git = "https://github.com/PartyWumpus/typst-concealer"
+fetch.tarball = "https://github.com/PartyWumpus/typst-concealer/archive/$ver.tar.gz"

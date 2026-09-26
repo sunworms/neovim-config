@@ -24,4 +24,13 @@
     };
     date = "2026-09-25";
   };
+  typst-concealer = {
+    pname = "typst-concealer";
+    version = "e2386b3ed0fd4ab1069ec75ea37aaa5ed14f9676";
+    src = fetchTarball {
+      url = "https://github.com/PartyWumpus/typst-concealer/archive/e2386b3ed0fd4ab1069ec75ea37aaa5ed14f9676.tar.gz";
+      sha256 = "sha256-IwH8Qsdwhu0OMkH0nZXF5GQ3yyIWjn5vxzn138BeofY=";
+    };
+    date = "2026-08-19";
+  };
 }
