@@ -17,12 +17,12 @@
   };
   nixpkgs = {
     pname = "nixpkgs";
-    version = "e94cb152ed51bd6e24eb4a41f1460252beb52cd2";
+    version = "e158d9ed9b51c98974c5e66e1ba1c9e0255fecaa";
     src = fetchTarball {
-      url = "https://github.com/NixOS/nixpkgs/archive/e94cb152ed51bd6e24eb4a41f1460252beb52cd2.tar.gz";
-      sha256 = "sha256-VVTPf+Hyd5ebpjBMHmrLMSBIeW6ls48Bqtosj7CNKLA=";
+      url = "https://github.com/NixOS/nixpkgs/archive/e158d9ed9b51c98974c5e66e1ba1c9e0255fecaa.tar.gz";
+      sha256 = "sha256-hKlVl12B1dF0Q5vd9dY3lIJM5mFGWYSlXwSLAqHZ1+s=";
     };
-    date = "2026-09-25";
+    date = "2026-09-26";
   };
   typst-concealer = {
     pname = "typst-concealer";
