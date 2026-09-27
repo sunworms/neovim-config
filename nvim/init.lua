@@ -106,7 +106,7 @@ end, { desc = "Clear search highlights and matches", silent = true })
 
 vim.o.winborder = "rounded"
 
-local theme_file = vim.fn.expand("~/.cache/noctalia/colors.vim")
+local theme_file = vim.fn.expand("~/.config/matugen/themes/colors.vim")
 
 local function apply_noctalia_theme()
 	if vim.loop.fs_stat(theme_file) then
