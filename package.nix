@@ -12,6 +12,7 @@
       lz-n
       friendly-snippets
       nvim-web-devicons
+      catppuccin-nvim
     ];
     opt = with pkgs.vimPlugins; [
       (pkgs.vimUtils.buildVimPlugin {
