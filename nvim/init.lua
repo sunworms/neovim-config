@@ -106,19 +106,30 @@ end, { desc = "Clear search highlights and matches", silent = true })
 
 vim.o.winborder = "rounded"
 
-require("catppuccin").setup({
-	transparent_background = true,
-	custom_highlights = function(colors)
-		return {
-			StatusLine = { bg = "NONE" },
-			StatusLineNC = { bg = "NONE" },
+local theme_file = vim.fn.expand("~/.cache/wal/vim-colors.vim")
 
-			MiniStatuslineDevinfo = { bg = "NONE" },
-			MiniStatuslineFilename = { bg = "NONE" },
-			MiniStatuslineFileinfo = { bg = "NONE" },
-		}
-	end,
+local function apply_theme()
+	if vim.loop.fs_stat(theme_file) then
+		vim.cmd.source(theme_file)
+	else
+		vim.cmd.colorscheme("catppuccin")
+	end
+end
+
+vim.api.nvim_create_autocmd("UIEnter", {
+	once = true,
+	callback = apply_theme,
 })
+
+local signal = vim.uv.new_signal()
+signal:start(
+	"sigusr1",
+	vim.schedule_wrap(function()
+		package.loaded["mini.statusline"] = nil
+		apply_theme()
+		require("mini.statusline").setup()
+	end)
+)
 
 vim.cmd.colorscheme("catppuccin-nvim")
 
