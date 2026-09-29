@@ -26,19 +26,5 @@
             "url": "https://github.com/NixOS/nixpkgs/archive/7a0f122f5090cf4c2ade2a13a0e229d4e19ba71f.tar.gz"
         },
         "version": "7a0f122f5090cf4c2ade2a13a0e229d4e19ba71f"
-    },
-    "typst-concealer": {
-        "cargoLock": null,
-        "date": "2026-08-19",
-        "extract": null,
-        "name": "typst-concealer",
-        "passthru": null,
-        "pinned": false,
-        "src": {
-            "sha256": "sha256-IwH8Qsdwhu0OMkH0nZXF5GQ3yyIWjn5vxzn138BeofY=",
-            "type": "tarball",
-            "url": "https://github.com/PartyWumpus/typst-concealer/archive/e2386b3ed0fd4ab1069ec75ea37aaa5ed14f9676.tar.gz"
-        },
-        "version": "e2386b3ed0fd4ab1069ec75ea37aaa5ed14f9676"
     }
 }

@@ -15,11 +15,6 @@
       catppuccin-nvim
     ];
     opt = with pkgs.vimPlugins; [
-      (pkgs.vimUtils.buildVimPlugin {
-        pname = "typst-concealer";
-        version = "unstable";
-        src = inputs.typst-concealer.src;
-      })
       nvim-treesitter.withAllGrammars
       gitsigns-nvim
       yazi-nvim
