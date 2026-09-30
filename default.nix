@@ -1,6 +1,7 @@
-{pkgs ? null}: let
-  inputs = import ./npins;
-
+{
+  pkgs ? null,
+  inputs ? import ./inputs.nix,
+}: let
   finalPkgs =
     if pkgs != null
     then pkgs
