@@ -10,7 +10,7 @@ let
       then locked.url
       else throw "inputs.nix: unsupported input type '${locked.type}' for '${name}'";
   in
-    builtins.fetchTarball {
+    fetchTarball {
       inherit url;
       sha256 = locked.narHash;
     };
