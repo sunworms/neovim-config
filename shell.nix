@@ -1,5 +1,10 @@
 let
-  inputs = import ./inputs.nix;
+  inputs = import ./_sources/generated.nix {
+    fetchurl = null;
+    fetchFromGitHub = null;
+    fetchgit = null;
+    dockerTools = null;
+  };
   pkgs = import inputs.nixpkgs {
     config.allowUnfree = true;
   };

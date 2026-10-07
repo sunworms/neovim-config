@@ -2,17 +2,16 @@
   pkgs,
   inputs,
 }: let
-  neovim = (import inputs.mnw).lib.wrap pkgs {
+  neovim = (import inputs.mnw.src).lib.wrap pkgs {
     neovim = pkgs.neovim-unwrapped;
     luaFiles = [
-      "${./nvim/init.lua}"
+      "${./config/init.lua}"
     ];
     plugins = {
       start = with pkgs.vimPlugins; [
         lz-n
         friendly-snippets
         nvim-web-devicons
-        catppuccin-nvim
       ];
       opt = with pkgs.vimPlugins; [
         nvim-treesitter.withAllGrammars
@@ -35,8 +34,8 @@
       ];
 
       dev.default = {
-        pure = "${./nvim}";
-        impure = "/home/sunny/Projects/neovim-config/nvim";
+        pure = "${./config}";
+        impure = "/home/sunny/Projects/neovim-config/config";
       };
     };
 

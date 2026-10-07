@@ -1,6 +1,6 @@
 return {
 	"nvim-lspconfig",
-	event = "BufReadPost",
+	event = { "BufReadPre", "BufNewFile" },
 	before = function()
 		require("lz.n").trigger_load("fzf-lua")
 		require("lz.n").trigger_load("blink.cmp")

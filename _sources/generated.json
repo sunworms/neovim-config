@@ -1,0 +1,30 @@
+{
+    "mnw": {
+        "cargoLock": null,
+        "date": "2026-09-25",
+        "extract": null,
+        "name": "mnw",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "sha256": "sha256-6IWPAMEotKY/nQvs1kU6qwMwCXTeW5HlOhw2RwFHFdI=",
+            "type": "tarball",
+            "url": "https://github.com/Gerg-L/mnw/archive/a582dbedf7c8ec7effa6939ac5bdd23b27267d1b.tar.gz"
+        },
+        "version": "a582dbedf7c8ec7effa6939ac5bdd23b27267d1b"
+    },
+    "nixpkgs": {
+        "cargoLock": null,
+        "date": "2026-10-06",
+        "extract": null,
+        "name": "nixpkgs",
+        "passthru": null,
+        "pinned": false,
+        "src": {
+            "sha256": "sha256-Miqqk/ammqnTUxaoCyvtwoPeLbI1ksFyLxi/CazZpWY=",
+            "type": "tarball",
+            "url": "https://github.com/NixOS/nixpkgs/archive/151fa4e8ddfdd8dd25d945ad94ed54a13de9f6e4.tar.gz"
+        },
+        "version": "151fa4e8ddfdd8dd25d945ad94ed54a13de9f6e4"
+    }
+}

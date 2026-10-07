@@ -99,6 +99,13 @@ key.set("n", "<C-k>", "<C-w>k")
 key.set("n", "<C-l>", "<C-w>l")
 key.set("n", "<C-v>", "<C-w>v")
 
+key.set("n", "j", "gj")
+key.set("n", "k", "gk")
+key.set("n", "<Down>", "gj")
+key.set("n", "<Up>", "gk")
+key.set("i", "<Down>", "<C-o>gj")
+key.set("i", "<Up>", "<C-o>gk")
+
 key.set("n", "<leader><space>", function()
 	vim.cmd("nohlsearch")
 	vim.fn.clearmatches()
@@ -106,7 +113,7 @@ end, { desc = "Clear search highlights and matches", silent = true })
 
 vim.o.winborder = "rounded"
 
-local theme_file = vim.fn.expand("~/.cache/wal/vim-colors.vim")
+local theme_file = vim.fn.expand("~/.cache/noctalia/colors.vim")
 
 local function apply_theme()
 	if vim.loop.fs_stat(theme_file) then
@@ -130,8 +137,6 @@ signal:start(
 		require("mini.statusline").setup()
 	end)
 )
-
-vim.cmd.colorscheme("catppuccin-nvim")
 
 vim.api.nvim_create_autocmd("FileType", {
 	callback = function(args)
