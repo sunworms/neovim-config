@@ -101,10 +101,10 @@ key.set("n", "<C-v>", "<C-w>v")
 
 key.set("n", "j", "gj", { desc = "Go down warped lines" })
 key.set("n", "k", "gk", { desc = "Go up warped lines" })
-key.set("n", "J", "j", { desc = "Go down normal lines" })
-key.set("n", "K", "k", { desc = "Go up normal lines" })
-key.set("n", "<leader>k", "K", { desc = "Hover documentation" })
-key.set("n", "<leader>j", "J", { desc = "Join lines" })
+key.set("n", "J", "j", { noremap = true, desc = "Go down normal lines" })
+key.set("n", "K", "k", { noremap = true, desc = "Go up normal lines" })
+key.set("n", "<leader>j", "J", { noremap = true, desc = "Join lines" })
+key.set("n", "<leader>k", vim.lsp.buf.hover, { desc = "Hover documentation" })
 key.set("n", "<Down>", "gj")
 key.set("n", "<Up>", "gk")
 key.set("i", "<Down>", "<C-o>gj")
@@ -114,6 +114,13 @@ key.set("n", "<leader><space>", function()
 	vim.cmd("nohlsearch")
 	vim.fn.clearmatches()
 end, { desc = "Clear search highlights and matches", silent = true })
+
+-- Reclaim K after LSP attaches
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		pcall(vim.keymap.del, "n", "K", { buffer = args.buf })
+	end,
+})
 
 vim.o.winborder = "rounded"
 
