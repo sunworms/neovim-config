@@ -101,6 +101,8 @@ key.set("n", "<C-v>", "<C-w>v")
 
 key.set("n", "j", "gj")
 key.set("n", "k", "gk")
+key.set("n", "gj", "j")
+key.set("n", "gk", "k")
 key.set("n", "<Down>", "gj")
 key.set("n", "<Up>", "gk")
 key.set("i", "<Down>", "<C-o>gj")
