@@ -9,7 +9,7 @@
     if pkgs != null
     then pkgs
     else
-      import inputs.nixpkgs {
+      import inputs.nixpkgs.src {
         config.allowUnfree = true;
       };
 in
