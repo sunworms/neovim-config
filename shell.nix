@@ -5,10 +5,10 @@ let
     fetchgit = null;
     dockerTools = null;
   };
-  pkgs = import inputs.nixpkgs {
+  pkgs = import inputs.nixpkgs.src {
     config.allowUnfree = true;
   };
-  neovim = import ./. {inherit pkgs inputs;};
+  neovim = import ./. {inherit pkgs;};
 in
   pkgs.mkShellNoCC {
     packages = [neovim.devMode];
