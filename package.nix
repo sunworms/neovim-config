@@ -2,7 +2,7 @@
   pkgs,
   inputs,
 }: let
-  neovim = inputs.mnw.lib.wrap pkgs {
+  neovim = (import inputs.mnw).lib.wrap pkgs {
     neovim = pkgs.neovim-unwrapped;
     luaFiles = [
       "${./config/init.lua}"
