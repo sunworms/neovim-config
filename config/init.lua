@@ -133,7 +133,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.o.winborder = "rounded"
 
-local theme_file = vim.fn.expand("~/.cache/noctalia/colors.vim")
+local theme_file = vim.fn.expand("~/.cache/wal/vim-colors.vim")
 
 local function apply_theme()
 	if vim.loop.fs_stat(theme_file) then
