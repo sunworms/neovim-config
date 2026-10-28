@@ -21,10 +21,9 @@
           (import ./package.nix {inherit pkgs inputs;}).devMode
         ];
       };
-    })
-    // {
-      nixConfig = {
-        experimental-features = ["nix-command" "flakes" "pipe-operators"];
-      };
-    };
+    });
+
+  nixConfig = {
+    experimental-features = ["nix-command" "flakes" "pipe-operators"];
+  };
 }
