@@ -30,7 +30,7 @@ printf '%s\n' "$PACK_BLOCK" > "$SCRATCH/nvim/init.lua"
 
 echo "Resolving plugin commit(s) with a scratch Neovim..."
 XDG_CONFIG_HOME="$SCRATCH" XDG_DATA_HOME="$SCRATCH/data" XDG_STATE_HOME="$SCRATCH/state" \
-	nix run nixpkgs#neovim -- --headless -u "$SCRATCH/nvim/init.lua" -c "quit"
+	nix run -f '<nixpkgs>' neovim -- --headless -u "$SCRATCH/nvim/init.lua" -c "quit"
 
 LOCKFILE="$SCRATCH/nvim/nvim-pack-lock.json"
 
