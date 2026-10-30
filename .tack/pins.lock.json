@@ -1,0 +1,22 @@
+{
+  "$declared": {
+    "mnw": "github:Gerg-L/mnw",
+    "nixpkgs": "github:NixOS/nixpkgs/nixos-unstable"
+  },
+  "mnw": {
+    "type": "github",
+    "owner": "Gerg-L",
+    "repo": "mnw",
+    "rev": "a582dbedf7c8ec7effa6939ac5bdd23b27267d1b",
+    "narHash": "sha256-6IWPAMEotKY/nQvs1kU6qwMwCXTeW5HlOhw2RwFHFdI=",
+    "lastModified": 1790357809
+  },
+  "nixpkgs": {
+    "type": "github",
+    "owner": "NixOS",
+    "repo": "nixpkgs",
+    "rev": "31ecbaca1bdefa45dffc409f0250bd8039ea0010",
+    "narHash": "sha256-dhoW6VgFWlaodSY5jrBn+CF2FLmaUvDVgM7+C7T2+NM=",
+    "lastModified": 1793110635
+  }
+}

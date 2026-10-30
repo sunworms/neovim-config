@@ -1,0 +1,14 @@
+[tack]
+recomposable = true
+
+[shorturls]
+gh = "github:{path}"
+
+[all_follow]
+nixpkgs = ["nixpkgs", "nixpkgs-lib"]
+
+[inputs.nixpkgs]
+url = "gh:NixOS/nixpkgs/nixos-unstable"
+
+[inputs.mnw]
+url = "gh:Gerg-L/mnw"
