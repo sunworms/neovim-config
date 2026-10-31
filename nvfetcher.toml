@@ -1,0 +1,8 @@
+[nixpkgs]
+src.git = "https://github.com/NixOS/nixpkgs"
+src.branch = "nixos-unstable"
+fetch.tarball = "https://github.com/NixOS/nixpkgs/archive/$ver.tar.gz"
+
+[mnw]
+src.git = "https://github.com/Gerg-L/mnw"
+fetch.tarball = "https://github.com/Gerg-L/mnw/archive/$ver.tar.gz"
