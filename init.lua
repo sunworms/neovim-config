@@ -24,7 +24,6 @@ local disabled_built_ins = {
 	"matchit",
 	"matchparen",
 	"editorconfig",
-	"man",
 	"osc52",
 	"shada",
 }
@@ -33,9 +32,9 @@ for _, plugin in ipairs(disabled_built_ins) do
 	vg["loaded_" .. plugin] = 1
 end
 
--- Set the leader key to the spacebar
-vg.mapleader = " "
-vg.maplocalleader = " "
+-- Set the leader key to comma
+vg.mapleader = ","
+vg.maplocalleader = "\\"
 vg.loaded_perl_provider = 0
 vg.loaded_ruby_provider = 0
 vg.loaded_node_provider = 0
@@ -57,8 +56,10 @@ opt.updatetime = 500
 
 -- UI
 opt.number = true
+opt.relativenumber = true
 opt.cursorline = true
 opt.signcolumn = "yes"
+opt.showmode = false
 
 -- Indentation
 opt.expandtab = true
@@ -87,66 +88,73 @@ opt.whichwrap:append("<,>,h,l,[,]")
 
 local key = vim.keymap
 
-key.set("n", "<Space>y", '"+y')
-key.set("v", "<Space>y", '"+y')
+key.set("n", "<leader>y", '"+y')
+key.set("v", "<leader>y", '"+y')
 
-key.set("n", "<Space>p", '"+p')
-key.set("v", "<Space>p", '"+p')
+key.set("n", "<leader>p", '"+p')
+key.set("v", "<leader>p", '"+p')
+
+key.set("n", "<C-h>", "<C-w>h")
+key.set("n", "<C-j>", "<C-w>j")
+key.set("n", "<C-k>", "<C-w>k")
+key.set("n", "<C-l>", "<C-w>l")
+key.set("n", "<C-v>", "<C-w>v")
+
+key.set("n", "j", "gj", { desc = "Go down warped lines" })
+key.set("n", "k", "gk", { desc = "Go up warped lines" })
+key.set("n", "J", "j", { noremap = true, desc = "Go down normal lines" })
+key.set("n", "K", "k", { noremap = true, desc = "Go up normal lines" })
+key.set("n", "<leader>j", "J", { noremap = true, desc = "Join lines" })
+key.set("n", "<leader>k", function()
+	if #vim.lsp.get_clients({ bufnr = 0, method = "textDocument/hover" }) > 0 then
+		vim.lsp.buf.hover()
+	else
+		vim.cmd("normal! K")
+	end
+end, { desc = "Hover documentation / man page" })
+key.set("n", "<Down>", "gj")
+key.set("n", "<Up>", "gk")
+key.set("i", "<Down>", "<C-o>gj")
+key.set("i", "<Up>", "<C-o>gk")
+
+key.set("n", "<leader><space>", function()
+	vim.cmd("nohlsearch")
+	vim.fn.clearmatches()
+end, { desc = "Clear search highlights and matches", silent = true })
+
+-- Reclaim K after LSP attaches
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		vim.schedule(function()
+			pcall(vim.keymap.del, "n", "K", { buffer = args.buf })
+		end)
+	end,
+})
 
 vim.o.winborder = "rounded"
 
-local function apply_transparency()
-	local groups = {
-		"Normal",
-		"NormalNC",
-		"NormalFloat",
-		"FloatBorder",
-		"SignColumn",
-		"EndOfBuffer",
-		"LineNr",
-		"CursorLineNr",
-		"VertSplit",
-		"WinSeparator",
-		"Pmenu",
-		"TabLine",
-		"TabLineFill",
-		"StatusLine",
-		"StatusLineNC",
-	}
-	for _, group in ipairs(groups) do
-		vim.api.nvim_set_hl(0, group, { bg = "none", ctermbg = "none" })
-	end
-end
+local theme_file = vim.fn.expand("~/.cache/noctalia/colors.vim")
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = apply_transparency,
-})
-
-local theme_file = vim.fn.expand("~/.config/matugen/matugen.lua")
-
-local function apply_matugen_theme()
-	local ok, theme = pcall(dofile, theme_file)
-	if ok and type(theme) == "table" and theme.setup then
-		theme.setup()
+local function apply_theme()
+	if vim.loop.fs_stat(theme_file) then
+		vim.cmd.source(theme_file)
 	else
-		vim.cmd.colorscheme("base16-catppuccin-mocha")
+		vim.cmd.colorscheme("catppuccin")
 	end
-
-	apply_transparency()
 end
 
 vim.api.nvim_create_autocmd("UIEnter", {
 	once = true,
-	callback = apply_matugen_theme,
+	callback = apply_theme,
 })
 
 local signal = vim.uv.new_signal()
 signal:start(
 	"sigusr1",
 	vim.schedule_wrap(function()
-		package.loaded["lualine"] = nil
-		apply_matugen_theme()
-		require("lualine").setup({ options = { theme = "base16" } })
+		package.loaded["mini.statusline"] = nil
+		apply_theme()
+		require("mini.statusline").setup()
 	end)
 )
 
@@ -189,7 +197,7 @@ require("lazy").setup({
 	spec = {
 		{ import = "plugins" },
 	},
-	install = { colorscheme = { "base16-catppuccin-mocha" } },
+	install = { colorscheme = { "catppuccin" } },
 	checker = { enabled = false },
 	change_detection = { notify = false },
 })

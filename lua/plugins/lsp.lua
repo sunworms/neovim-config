@@ -1,6 +1,6 @@
 return {
 	"neovim/nvim-lspconfig",
-	event = "BufReadPost",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = { "ibhagwan/fzf-lua", "saghen/blink.cmp" },
 	config = function()
 		require("fzf-lua").register_ui_select()

@@ -1,12 +1,8 @@
 return {
-	"nvim-lualine/lualine.nvim",
+	"echasnovski/mini.statusline",
 	event = "VeryLazy",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
-		require("lualine").setup({
-			options = {
-				theme = "base16",
-			},
-		})
+		require("mini.statusline").setup()
 	end,
 }
