@@ -152,6 +152,7 @@ local signal = vim.uv.new_signal()
 signal:start(
 	"sigusr1",
 	vim.schedule_wrap(function()
+		require("lz.n").trigger_load("mini.statusline")
 		package.loaded["mini.statusline"] = nil
 		apply_theme()
 		require("mini.statusline").setup()
@@ -177,27 +178,40 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 opt.foldenable = false
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-	local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-	if vim.v.shell_error ~= 0 then
-		vim.api.nvim_echo({
-			{ "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-			{ out, "WarningMsg" },
-			{ "\nPress any key to exit..." },
-		}, true, {})
-		vim.fn.getchar()
-		os.exit(1)
-	end
+local gh = function(repo)
+	return "https://github.com/" .. repo
 end
-vim.opt.rtp:prepend(lazypath)
 
-require("lazy").setup({
-	spec = {
-		{ import = "plugins" },
-	},
-	install = { colorscheme = { "catppuccin" } },
-	checker = { enabled = false },
-	change_detection = { notify = false },
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if name == "nvim-treesitter" and kind == "update" then
+			if not ev.data.active then
+				vim.cmd.packadd(name)
+			end
+			vim.cmd("TSUpdate")
+		end
+	end,
 })
+
+vim.pack.add({ gh("lumen-oss/lz.n") })
+
+vim.pack.add({
+	{ src = gh("nvim-treesitter/nvim-treesitter"), version = "main" },
+	{ src = gh("saghen/blink.cmp"), version = vim.version.range("1.*") },
+	gh("rafamadriz/friendly-snippets"),
+	{ src = gh("catppuccin/nvim"), name = "catppuccin" },
+	gh("stevearc/conform.nvim"),
+	gh("ibhagwan/fzf-lua"),
+	gh("lewis6991/gitsigns.nvim"),
+	gh("echasnovski/mini.statusline"),
+	gh("windwp/nvim-autopairs"),
+	gh("neovim/nvim-lspconfig"),
+	gh("nvim-tree/nvim-web-devicons"),
+	gh("nvim-lua/plenary.nvim"),
+	gh("chomosuke/typst-preview.nvim"),
+	gh("lervag/vimtex"),
+	gh("mikavilpas/yazi.nvim"),
+}, { load = function() end })
+
+require("lz.n").load("plugins")

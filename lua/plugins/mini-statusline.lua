@@ -1,8 +1,10 @@
 return {
-	"echasnovski/mini.statusline",
-	event = "VeryLazy",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-	config = function()
+	"mini.statusline",
+	event = "DeferredUIEnter",
+	before = function()
+		vim.cmd.packadd("nvim-web-devicons")
+	end,
+	after = function()
 		require("mini.statusline").setup()
 	end,
 }

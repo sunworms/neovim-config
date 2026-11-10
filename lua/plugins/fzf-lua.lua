@@ -1,9 +1,10 @@
 return {
-	"ibhagwan/fzf-lua",
+	"fzf-lua",
 	cmd = "FzfLua",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
-
-	config = function()
+	before = function()
+		vim.cmd.packadd("nvim-web-devicons")
+	end,
+	after = function()
 		require("fzf-lua").setup()
 	end,
 	keys = {
@@ -38,7 +39,7 @@ return {
 			end,
 		},
 		{
-			"<leader>fh",
+			"<leader>fd",
 			function()
 				require("fzf-lua").diagnostics_document()
 			end,

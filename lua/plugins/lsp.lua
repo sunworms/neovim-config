@@ -1,8 +1,10 @@
 return {
-	"neovim/nvim-lspconfig",
+	"nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = { "ibhagwan/fzf-lua", "saghen/blink.cmp" },
-	config = function()
+	before = function()
+		require("lz.n").trigger_load({ "fzf-lua", "blink.cmp" })
+	end,
+	after = function()
 		require("fzf-lua").register_ui_select()
 		local capabilities = require("blink.cmp").get_lsp_capabilities()
 

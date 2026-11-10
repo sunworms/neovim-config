@@ -1,7 +1,7 @@
 return {
-	"chomosuke/typst-preview.nvim",
+	"typst-preview.nvim",
 	ft = "typst",
-	config = function()
+	after = function()
 		require("typst-preview").setup({
 			invert_colors = "auto",
 			dependencies_bin = {

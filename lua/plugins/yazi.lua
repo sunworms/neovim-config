@@ -1,7 +1,10 @@
 return {
-	"mikavilpas/yazi.nvim",
-	event = "VeryLazy",
-	config = function()
+	"yazi.nvim",
+	event = "DeferredUIEnter",
+	before = function()
+		vim.cmd.packadd("plenary.nvim")
+	end,
+	after = function()
 		require("yazi").setup({
 			open_for_directories = true,
 			keymaps = {

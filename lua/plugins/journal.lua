@@ -1,7 +1,6 @@
--- Local module (lua/journal.lua), lazy-loaded through its commands and keymaps.
 return {
-	name = "journal",
-	dir = vim.fn.stdpath("config"),
+	"journal",
+	load = function() end,
 	cmd = {
 		"Journal",
 		"Today",
@@ -31,7 +30,7 @@ return {
 		{ "<leader>ju", "<cmd>JournalTodos<CR>", desc = "Journal: Find Pending Tasks" },
 		{ "<leader>jd", "<cmd>JournalDone<CR>", desc = "Journal: Find Completed Tasks" },
 	},
-	config = function()
+	after = function()
 		require("journal").setup()
 	end,
 }

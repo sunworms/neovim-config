@@ -1,9 +1,10 @@
 return {
-	"saghen/blink.cmp",
+	"blink.cmp",
 	event = "InsertEnter",
-	version = "1.*",
-	dependencies = { "rafamadriz/friendly-snippets" },
-	config = function()
+	before = function()
+		vim.cmd.packadd("friendly-snippets")
+	end,
+	after = function()
 		require("blink.cmp").setup({
 			keymap = { preset = "super-tab" },
 
