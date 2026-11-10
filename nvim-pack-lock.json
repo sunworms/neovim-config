@@ -63,7 +63,7 @@
       "src": "https://github.com/lervag/vimtex"
     },
     "yazi.nvim": {
-      "rev": "17edd61469575f5b28c8f6460254f0366583f8dd",
+      "rev": "e387d7baf907a24cfa262c7b38a9d9d783056938",
       "src": "https://github.com/mikavilpas/yazi.nvim"
     }
   }
